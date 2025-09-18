@@ -277,10 +277,23 @@ def copy_file(source_path, dest_path, institution, monitor_obj, buffer_size=16*1
 
 # 优化的文件匹配函数
 def extract_file_number(fname):
-    """从文件名中提取开头的数字序号，后面带上-号"""
+    """从文件名中提取开头的数字序号，并在后面添加连字符
+    
+    功能：该函数用于从文件名的开头提取连续的数字序列，并在末尾添加连字符'-'
+    参数：
+        fname (str): 文件名字符串
+    返回：
+        str: 如果文件名以数字开头，则返回提取的数字加连字符；否则返回None
+    示例：
+        "123_document.pdf" -> "123-"
+        "file_456.txt" -> None
+    """
+    # 使用正则表达式匹配文件名开头的一个或多个数字
     match = re.match(r'^(\d+)', fname)
+    # 如果匹配成功，提取数字部分并添加连字符
     if match:
         return match.group(1) + '-'
+    # 如果文件名不以数字开头，返回None
     return None
 
 # 迁移文件的主函数

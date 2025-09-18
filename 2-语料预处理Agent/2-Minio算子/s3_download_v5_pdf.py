@@ -1,12 +1,21 @@
+# 导入日志模块，用于记录程序运行状态和错误信息
 import logging
+# 导入线程模块，用于多线程操作和线程同步
 import threading
+# 导入操作系统模块，用于文件和路径操作
 import os
+# 导入时间模块，用于计时和延时操作
 import time
+# 导入参数解析模块，用于处理命令行参数
 import argparse
+# 导入并发执行模块，用于创建线程池和处理异步任务
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
+# 导入AWS SDK for Python，用于与S3兼容的存储服务交互
 import boto3
+# 导入boto3配置模块，用于配置客户端连接参数
 from botocore.config import Config
+# 导入boto3异常类，用于处理认证错误和客户端错误
 from botocore.exceptions import NoCredentialsError, ClientError
 
 # 设置日志
@@ -110,16 +119,22 @@ def get_all_files(s3_client, source_folder):
 
     logger.info(f"开始扫描S3路径：{source_folder} 中的PDF文件")
     
+    # 遍历分页器返回的每一页结果
     for page in page_iterator:
+        # 检查当前页是否包含文件内容
         if 'Contents' in page:
+            # 遍历当前页中的所有对象
             for obj in page['Contents']:
+                # 获取对象的键（文件路径）
                 key = obj['Key']
-                # 只获取PDF文件
+                # 筛选出PDF格式的文件
                 if key.endswith('.pdf'):
                     logger.debug(f"发现PDF文件：{key}")
                     files.append(key)
     
+    # 记录扫描结果信息
     logger.info(f"扫描完成，共发现 {len(files)} 个PDF文件")
+    # 返回找到的所有PDF文件路径列表
     return files
 
 
