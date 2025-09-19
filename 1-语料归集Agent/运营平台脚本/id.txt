@@ -1,0 +1,52 @@
+ssh test@192.168.81.210
+ssh test@192.168.81.211
+ssh test@192.168.81.212
+ssh test@192.168.81.213
+
+
+210   ^KFg-=Er6
+211   DEyz!w-@1
+212   1zRSAm23l
+213   olG%ScHLK
+
+sh /data/NV/allinone/mnt/allinone/data/app/deploy/x86/reboot_restart_all.sh
+
+http://192.168.81.210:20000/api/task/v1/scanIncompleteTask?force=&delay=500
+http://192.168.81.210:20000/api/task/v1/configDoIncompleteTask
+
+
+nacos.release_service(f"text-python-model-mineru-remote-{config.__model_mode__}")
+
+vim /data/NV/allinone/mnt/allinone/data/app/clean_engine/text_mineru/app.py
+
+scp /data/NV/allinone/mnt/allinone/data/app/clean_engine/text_mineru/app.py test@192.168.81.213:/data/NV/allinone/mnt/allinone/data/app/clean_engine/text_mineru
+
+
+删除 删除
+P2025042500014_C2025042800001
+P2025042500014
+NULL
+2025-04-28 16:42:06
+5
+1834068431239221248
+["192.168.81.210"]
+2025-04-29 12:55:25.698039
+697
+	
+编辑 编辑
+复制 复制
+删除 删除
+P2025042200005_C2025042700001
+P2025042200005
+NULL
+2025-04-27 20:27:46
+5
+1834068431239221248
+["192.168.81.210"]
+2025-04-29 12:55:25.659182
+870
+	
+编辑 编辑
+复制 复制
+删除 删除
+P2025042500008_C2025042700001

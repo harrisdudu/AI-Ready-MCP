@@ -1,0 +1,35 @@
+docker logs -f --tail 300 process-instance-show
+
+docker logs -fn 3000 process-instance-show
+
+docker logs -fn 3000 computing_dispatch
+
+
+sh /data/NV/allinone/mnt/allinone/data/app/computing_dispatch/deploy
+
+docker logs -f --tail 300 computing_dispatch
+
+docker ps | grep computing
+
+docker restart 6765920455a4_computing_dispatch
+
+docker logs -f 6765920455a4
+docker rm -f 6765920455a4
+ 
+scp /home/lenovo/Downloads/tongji.tar test@192.168.81.210:/home/test
+
+scp /home/lenovo/Downloads/3labelUpd.sql test@192.168.81.210:/home/test
+scp /home/lenovo/Downloads/3labelUpd.sh test@192.168.81.210:/home/test
+
+210   ^KFg-=Er6
+
+find "/home/lenovo/高质量材料/上海市自然资源调查利用研究院" -type f -exec cp {} "/home/lenovo/高质量语料第一批/上海市自然资源调查利用研究院" \;
+
+find "/home/lenovo/高质量材料-书/同济大学" -type f -exec cp {} "/home/lenovo/高质量语料第一批/同济大学" \;
+
+
+find "/home/lenovo/高质量语料第一批" -type f -exec cp {} "/home/lenovo/高质量清洗标注第一批" \;
+
+find "/home/lenovo/高质量材料-书" -type f -exec cp {} "/home/lenovo/高质量清洗标注第一批/book-74" \;
+
+

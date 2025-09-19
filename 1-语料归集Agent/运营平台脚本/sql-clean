@@ -1,0 +1,39 @@
+SELECT
+    cw.bid,
+    COUNT(CASE WHEN ct.state = 0 THEN 1 END) AS `未初始化`,
+    COUNT(CASE WHEN ct.state = 1 THEN 1 END) AS `任务初始化`,
+    COUNT(CASE WHEN ct.state = 2 THEN 1 END) AS `语料下载`,
+    COUNT(CASE WHEN ct.state = 3 THEN 1 END) AS `语料清洗`,
+    COUNT(CASE WHEN ct.state = 4 THEN 1 END) AS `语料后续节点1`,
+    COUNT(CASE WHEN ct.state = 5 THEN 1 END) AS `语料后续节点2`,
+    COUNT(CASE WHEN ct.state = 6 THEN 1 END) AS `语料上传`,
+    COUNT(CASE WHEN ct.state = 99 THEN 1 END) AS `处理失败`
+FROM
+    clean_work cw
+LEFT JOIN
+    clean_task ct ON ct.bid = cw.bid
+WHERE
+    cw.state = 2
+GROUP BY
+    cw.bid;
+
+
+
+
+SELECT * FROM clean_work WHERE create_date < '2025-01-01';
+
+
+
+curl --request POST \
+  --url http://192.168.81.210:20000/api/task/v1/submit \
+  --header 'Accept: */*' \
+  --header 'Accept-Encoding: gzip, deflate, br' \
+  --header 'Connection: keep-alive' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: PostmanRuntime-ApipostRuntime/1.1.0' \
+  --data '{
+    "bidList": [
+        "P2025042200005_C2025042700001"
+    ],
+    "delay": 1000
+}'
