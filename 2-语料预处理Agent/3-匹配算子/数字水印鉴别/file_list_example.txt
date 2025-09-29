@@ -1,0 +1,17 @@
+# 文件清单示例
+# 这是一个示例文件清单，用于演示file_selector_copier.py工具
+# 每行一个文件名，可以包含相对路径
+# 以#开头的行被视为注释
+
+# 示例PDF文件
+report.pdf
+document.pdf
+contract.pdf
+
+# 包含子目录的文件
+forms/application.pdf
+reports/annual_2023.pdf
+
+# 其他类型文件
+data.csv
+notes.txt

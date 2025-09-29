@@ -1,0 +1,4 @@
+pypdf>=3.0.0
+PyMuPDF>=1.21.0
+cryptography>=41.0.0
+reportlab>=3.6.0

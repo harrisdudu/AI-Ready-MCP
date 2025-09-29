@@ -1,0 +1,8 @@
+{
+    "default_pdf_path": "path/to/your/default/document.pdf",
+    "file_selector_file_list": "scanPDFs.txt",
+    "file_selector_target_dir": "E:\\规资-726数据（1-4批+采购+人工）\\签名文件",
+    "file_selector_preserve_structure": false,
+    "file_selector_extensions": ["pdf"],
+    "file_selector_chunk_size": 100
+}
