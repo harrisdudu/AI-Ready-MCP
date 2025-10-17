@@ -1,0 +1,43 @@
+-- CDR_OBS.dbo.OBS_ReportImageListSub definition
+
+-- Drop table
+
+-- DROP TABLE CDR_OBS.dbo.OBS_ReportImageListSub;
+
+CREATE TABLE CDR_OBS.dbo.OBS_ReportImageListSub (
+	FillerOrderNo nvarchar(120) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	ClassID nvarchar(10) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	ClassDescription nvarchar(20) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	ImageNo nvarchar(100) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	SequenceNo nvarchar(50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	Description nvarchar(255) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	Feed nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	FeedKey nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	FeedValue nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	IsDeleted smallint NOT NULL,
+	LastUpdateDtTm datetime NOT NULL,
+	LastImportDtTm datetime NOT NULL,
+	[timestamp] timestamp NOT NULL,
+	DiagnosDr nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	DiagnosDrName nvarchar(100) COLLATE Chinese_PRC_CI_AS NULL,
+	AppDrId nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	AppDrName nvarchar(100) COLLATE Chinese_PRC_CI_AS NULL,
+	CONSTRAINT PK_OBS_ReportImageListSub PRIMARY KEY (FillerOrderNo,ClassID,ImageNo,SequenceNo)
+);
+ CREATE CLUSTERED INDEX [ClusteredIndex-timestamp] ON CDR_OBS.dbo.OBS_ReportImageListSub (  timestamp ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX IDX_FILLERORDERNO_OBS_ReportImageListSub ON CDR_OBS.dbo.OBS_ReportImageListSub (  FillerOrderNo ASC  , ClassID ASC  , ImageNo ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX Index_OBS_ReportImageListSub_LastUpdateDtTm ON CDR_OBS.dbo.OBS_ReportImageListSub (  ClassID ASC  , LastUpdateDtTm ASC  )  
+	 INCLUDE ( Description , FillerOrderNo ) 
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX Index_OBS_ReportImageListSub_N1 ON CDR_OBS.dbo.OBS_ReportImageListSub (  IsDeleted ASC  , SequenceNo ASC  )  
+	 INCLUDE ( Description , FillerOrderNo ) 
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX Index_sequenceno ON CDR_OBS.dbo.OBS_ReportImageListSub (  SequenceNo ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;

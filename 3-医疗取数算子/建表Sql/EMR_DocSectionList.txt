@@ -1,0 +1,36 @@
+-- CDR_EMR.dbo.EMR_DocSectionList definition
+
+-- Drop table
+
+-- DROP TABLE CDR_EMR.dbo.EMR_DocSectionList;
+
+CREATE TABLE CDR_EMR.dbo.EMR_DocSectionList (
+	ID nvarchar(50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	DocID nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	HospitalCode nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	SectionCode nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	SectionName nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	DocTypeCode nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	DocTypeName nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	TypeCode nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	TypeName nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	SectionHTML nvarchar(MAX) COLLATE Chinese_PRC_CI_AS NULL,
+	SectionXML nvarchar(MAX) COLLATE Chinese_PRC_CI_AS NULL,
+	SectionContent nvarchar(MAX) COLLATE Chinese_PRC_CI_AS NULL,
+	SectionImage varbinary(MAX) NULL,
+	Feed nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	FeedKey nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	FeedValue nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	IsDeleted smallint NULL,
+	LastUpdateDtTm datetime NULL,
+	LastImportDtTm datetime NULL,
+	[TimeStamp] timestamp NULL,
+	CONSTRAINT IDX_EMR_SectionList UNIQUE (ID,TypeCode),
+	CONSTRAINT PK_EMR_DocSectionList PRIMARY KEY (ID)
+);
+ CREATE NONCLUSTERED INDEX idx_DocID ON CDR_EMR.dbo.EMR_DocSectionList (  DocID ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX idx_IsDeleted ON CDR_EMR.dbo.EMR_DocSectionList (  IsDeleted ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;

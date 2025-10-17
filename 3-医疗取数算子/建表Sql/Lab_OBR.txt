@@ -1,0 +1,107 @@
+-- CDR_LAB.dbo.Lab_OBR definition
+
+-- Drop table
+
+-- DROP TABLE CDR_LAB.dbo.Lab_OBR;
+
+CREATE TABLE CDR_LAB.dbo.Lab_OBR (
+	FillerOrderNo nvarchar(60) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	PlacerOrderNumber nvarchar(80) COLLATE Chinese_PRC_CI_AS NULL,
+	SpecimenInternalNo nvarchar(80) COLLATE Chinese_PRC_CI_AS NULL,
+	SpecimenID nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	VisitNumber nvarchar(10) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	PatientID nvarchar(20) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	ResultStatus nvarchar(10) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	DiagnosticServSectID nvarchar(10) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	DiagnosticServSectDescription nvarchar(80) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	Culture nvarchar(2) COLLATE Chinese_PRC_CI_AS NULL,
+	UniversalServiceID nvarchar(60) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	UniversalServiceName nvarchar(200) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	PatientClass nvarchar(10) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	PatientName nvarchar(80) COLLATE Chinese_PRC_CI_AS NULL,
+	PatientSex nvarchar(10) COLLATE Chinese_PRC_CI_AS NULL,
+	PatientAgeUnit nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	PatientAgeText nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	PatientAgeHours int NULL,
+	PatientNation nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	PatientNationName nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	HospitalService nvarchar(10) COLLATE Chinese_PRC_CI_AS NULL,
+	HospitalServiceDescription nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	HospitalService_HIS nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	AssignedLocationUnit nvarchar(10) COLLATE Chinese_PRC_CI_AS NULL,
+	AssignedLocationUnitDescription nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	AssignedLocationUnit_HIS nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	BedNo nvarchar(10) COLLATE Chinese_PRC_CI_AS NULL,
+	RequestDateTime datetime NULL,
+	OrderingProviderNo nvarchar(10) COLLATE Chinese_PRC_CI_AS NULL,
+	OrderingProviderName nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	OrderCallbackPhoneNo nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	OrderingDepartmentID nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	OrderingDepartmentName nvarchar(60) COLLATE Chinese_PRC_CI_AS NULL,
+	OrderingFacilityID nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	OrderingFacilityName nvarchar(60) COLLATE Chinese_PRC_CI_AS NULL,
+	RelevantClinicalInfo nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	SpecimenSourceCode nvarchar(10) COLLATE Chinese_PRC_CI_AS NULL,
+	SpecimenSourceName nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	SpecimenStatusCode nvarchar(2) COLLATE Chinese_PRC_CI_AS NULL,
+	SpecimenStatusName nvarchar(20) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	SpecimenSourceSiteCode nvarchar(20) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	SpecimenSourceSiteName nvarchar(40) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	SpecimenCollectionDateTime datetime NOT NULL,
+	SpecimenReceiveDateTime datetime NULL,
+	SpecimenReceivor nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	SpecimenCollector nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	ObservationDateTime datetime NULL,
+	PerformDateTime datetime NULL,
+	FinalResultDateTime datetime NOT NULL,
+	PerformStaffNo nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	AssistantResultInterpreter nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	PrincipleResultInterpreter nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	Instrument nvarchar(100) COLLATE Chinese_PRC_CI_AS NULL,
+	Feed nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	FeedKey nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	FeedValue nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	IsDeleted smallint NOT NULL,
+	LastUpdateDtTm datetime NOT NULL,
+	LastImportDtTm datetime NOT NULL,
+	[timestamp] timestamp NOT NULL,
+	HospitalID nvarchar(10) COLLATE Chinese_PRC_CI_AS NULL,
+	DiagnosticServSectID2 nvarchar(10) COLLATE Chinese_PRC_CI_AS NULL,
+	DiagnosticServSectDescription2 nvarchar(80) COLLATE Chinese_PRC_CI_AS NULL,
+	PhysiCycle nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	PatDiag nvarchar(100) COLLATE Chinese_PRC_CI_AS NULL,
+	RequestedProcedureID nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	SSN nvarchar(30) COLLATE Chinese_PRC_CI_AS NULL,
+	BarCode nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	CONSTRAINT PK_Lab_OBR PRIMARY KEY (FillerOrderNo)
+);
+ CREATE NONCLUSTERED INDEX INDEX_FillerOrderNo ON CDR_LAB.dbo.Lab_OBR (  FillerOrderNo ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX INDEX_FinalResultDateTime ON CDR_LAB.dbo.Lab_OBR (  FinalResultDateTime ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX INDEX_HospitalID ON CDR_LAB.dbo.Lab_OBR (  HospitalID ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX INDEX_IsDeleted ON CDR_LAB.dbo.Lab_OBR (  IsDeleted ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX INDEX_PatientClass ON CDR_LAB.dbo.Lab_OBR (  PatientClass ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX INDEX_PatientID ON CDR_LAB.dbo.Lab_OBR (  PatientID ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX INDEX_ResultStatus ON CDR_LAB.dbo.Lab_OBR (  ResultStatus ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX INDEX_VisitNumber ON CDR_LAB.dbo.Lab_OBR (  VisitNumber ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX [NonClusteredIndex-20250422-164705] ON CDR_LAB.dbo.Lab_OBR (  BarCode ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX idx_LastUpdateDtTm ON CDR_LAB.dbo.Lab_OBR (  LastUpdateDtTm ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;

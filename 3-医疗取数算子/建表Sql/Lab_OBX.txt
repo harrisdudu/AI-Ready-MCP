@@ -1,0 +1,53 @@
+-- CDR_LAB.dbo.Lab_OBX definition
+
+-- Drop table
+
+-- DROP TABLE CDR_LAB.dbo.Lab_OBX;
+
+CREATE TABLE CDR_LAB.dbo.Lab_OBX (
+	FillerOrderNo nvarchar(60) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	SetID nvarchar(60) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	DiagnosticServSectID nvarchar(10) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	DiagnosticServSectName nvarchar(80) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	Culture nvarchar(2) COLLATE Chinese_PRC_CI_AS NULL,
+	ObservationID nvarchar(60) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	ObservationCode nvarchar(60) COLLATE Chinese_PRC_CI_AS NULL,
+	ObservationEN nvarchar(100) COLLATE Chinese_PRC_CI_AS NULL,
+	ObservationCN nvarchar(100) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	ObservationOriginalValue nvarchar(60) COLLATE Chinese_PRC_CI_AS NULL,
+	ObservationValue nvarchar(60) COLLATE Chinese_PRC_CI_AS NULL,
+	AbnormalFlag nvarchar(60) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	ReferenceRange nvarchar(200) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	Units nvarchar(80) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	ResultType nvarchar(80) COLLATE Chinese_PRC_CI_AS NULL,
+	ObservationDateTime datetime NULL,
+	UnivsersalServiceID nvarchar(40) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	UniversalServiceName nvarchar(60) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	Instrument nvarchar(60) COLLATE Chinese_PRC_CI_AS NULL,
+	ResponsibleObserver nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	Feed nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	FeedKey nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	FeedValue nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	IsDeleted smallint NOT NULL,
+	LastUpdateDtTm datetime NOT NULL,
+	LastImportDtTm datetime NOT NULL,
+	[timestamp] timestamp NOT NULL,
+	ObservationNumericValue decimal(18,4) NULL,
+	HospitalID nvarchar(10) COLLATE Chinese_PRC_CI_AS NULL,
+	CONSTRAINT PK_Lab_OBX_TO PRIMARY KEY (FillerOrderNo,SetID)
+);
+ CREATE NONCLUSTERED INDEX idx_FillerOrderNo ON CDR_LAB.dbo.Lab_OBX (  FillerOrderNo ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX idx_IsDeleted ON CDR_LAB.dbo.Lab_OBX (  IsDeleted ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX idx_LastImportDtTm ON CDR_LAB.dbo.Lab_OBX (  LastImportDtTm ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX idx_LastUpdateDtTm ON CDR_LAB.dbo.Lab_OBX (  LastUpdateDtTm ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX idx_ObservationDateTime ON CDR_LAB.dbo.Lab_OBX (  ObservationDateTime ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;

@@ -1,0 +1,54 @@
+-- CDR_EMR.dbo.EMR_DocList definition
+
+-- Drop table
+
+-- DROP TABLE CDR_EMR.dbo.EMR_DocList;
+
+CREATE TABLE CDR_EMR.dbo.EMR_DocList (
+	DocID nvarchar(50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	HospitalID nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	VisitNumber nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	PatientID nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	TemplateID nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	DocTypeCode nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	DocTypeName nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	DocDate datetime NULL,
+	DocHTML nvarchar(MAX) COLLATE Chinese_PRC_CI_AS NULL,
+	DocXML nvarchar(MAX) COLLATE Chinese_PRC_CI_AS NULL,
+	DocContent nvarchar(MAX) COLLATE Chinese_PRC_CI_AS NULL,
+	DocImage varbinary(MAX) NULL,
+	DoctorNO nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	DoctorName nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	SubmitDtTm datetime NULL,
+	AuditStaffNO nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	AuditStaffName nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	AuditDtTm datetime NULL,
+	Audit2StaffNO nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	Audit2StaffName nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	Audit2DtTm datetime NULL,
+	Comments nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	Feed nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	FeedKey nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	FeedValue nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	IsDeleted smallint NULL,
+	LastUpdateDtTm datetime NULL,
+	LastImportDtTm datetime NULL,
+	[TimeStamp] timestamp NULL,
+	TemplateIDInUse nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	CONSTRAINT PK_EMR_DocList_New PRIMARY KEY (DocID)
+);
+ CREATE NONCLUSTERED INDEX EMR_DocList_DocTypeCode ON CDR_EMR.dbo.EMR_DocList (  DocTypeCode ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX IDX_DocDate_EMR_DocList ON CDR_EMR.dbo.EMR_DocList (  DocDate ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX IDX_EMR_DocList_DOC_Template ON CDR_EMR.dbo.EMR_DocList (  DocID ASC  , DocTypeCode ASC  , TemplateID ASC  , LastImportDtTm ASC  , IsDeleted ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX IDX_PatientID_EMR_DocList ON CDR_EMR.dbo.EMR_DocList (  PatientID ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX IDX_VisitNumber_EMR_DocList ON CDR_EMR.dbo.EMR_DocList (  VisitNumber ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;

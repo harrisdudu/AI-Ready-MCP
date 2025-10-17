@@ -1,0 +1,79 @@
+-- CDR_OBS.dbo.OBS_Report definition
+
+-- Drop table
+
+-- DROP TABLE CDR_OBS.dbo.OBS_Report;
+
+CREATE TABLE CDR_OBS.dbo.OBS_Report (
+	FillerOrderNo nvarchar(120) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	ReportID nvarchar(40) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	RequestedProcedureID nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	PatientID nvarchar(20) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	VisitNumber nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	ReportStatus nvarchar(20) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	ReportStatusDescription nvarchar(60) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	RequestDateTime datetime NULL,
+	OrderingProviderNo nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	OrderingProviderName nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	OrderingDepartmentID nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	OrderingDepartmentName nvarchar(60) COLLATE Chinese_PRC_CI_AS NULL,
+	OrderingFacilityID nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	OrderingFacilityName nvarchar(60) COLLATE Chinese_PRC_CI_AS NULL,
+	RelevantClinicalInfo nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	AssistantResultInterpreterNo nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	AssistantResultInterpreterName nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	ResultDateTime datetime NOT NULL,
+	PrincipleResultInterpreterNo nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	PrincipleResultInterpreterName nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	ReaderPieceDoctorNo nvarchar(10) COLLATE Chinese_PRC_CI_AS NULL,
+	ReaderPieceDoctorName nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	FinalResultDateTime datetime NULL,
+	TechDeptCode nvarchar(40) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	TechDeptName nvarchar(60) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	PublishDate datetime NULL,
+	DiagnosticImagingTech nvarchar(MAX) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	ImagingFindings nvarchar(MAX) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	ImagingConclusion nvarchar(MAX) COLLATE Chinese_PRC_CI_AS NULL,
+	IsPositive nvarchar(20) COLLATE Chinese_PRC_CI_AS NULL,
+	Feed nvarchar(50) COLLATE Chinese_PRC_CI_AS NULL,
+	FeedKey nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	FeedValue nvarchar(200) COLLATE Chinese_PRC_CI_AS NULL,
+	IsDeleted smallint NOT NULL,
+	LastUpdateDtTm datetime NOT NULL,
+	LastImportDtTm datetime NOT NULL,
+	ClassID nvarchar(10) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	ClassDescription nvarchar(20) COLLATE Chinese_PRC_CI_AS NOT NULL,
+	[timestamp] timestamp NULL,
+	ReportDisplayID nvarchar(40) COLLATE Chinese_PRC_CI_AS NULL,
+	ProjectCode nvarchar(100) COLLATE Chinese_PRC_CI_AS NULL,
+	ProjectName nvarchar(100) COLLATE Chinese_PRC_CI_AS NULL,
+	PatientIntraID int NULL,
+	AbnormalFlag int NULL,
+	CONSTRAINT PK_OBS_Report PRIMARY KEY (FillerOrderNo,ReportID,ClassID)
+);
+ CREATE NONCLUSTERED INDEX [<OBS_RPT_INDEX_0520>] ON CDR_OBS.dbo.OBS_Report (  FillerOrderNo ASC  , PatientID ASC  )  
+	 INCLUDE ( ClassID , ImagingConclusion , IsDeleted ) 
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX IDX_ClassID ON CDR_OBS.dbo.OBS_Report (  ClassID ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX IDX_FillerOrderNo ON CDR_OBS.dbo.OBS_Report (  FillerOrderNo ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX IDX_IsDeleted ON CDR_OBS.dbo.OBS_Report (  IsDeleted ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX IDX_OBS_Renteport1 ON CDR_OBS.dbo.OBS_Report (  VisitNumber ASC  )  
+	 INCLUDE ( ImagingConclusion ) 
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX IDX_OBS_Renteport_PatientID ON CDR_OBS.dbo.OBS_Report (  PatientID ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX IDX_OBS_Renteport_VisitNumber ON CDR_OBS.dbo.OBS_Report (  VisitNumber ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
+ CREATE NONCLUSTERED INDEX [OBS_Report-timestamp] ON CDR_OBS.dbo.OBS_Report (  timestamp ASC  )  
+	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
+	 ON [PRIMARY ] ;
