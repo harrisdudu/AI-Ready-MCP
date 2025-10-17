@@ -74,8 +74,8 @@ def convert_task(args):
     return office_to_pdf(input_path, output_path)
 
 if __name__ == "__main__":
-    input_dir = r"H:\第四批原料-0711\word-29"
-    output_dir = r"H:\WORD2PDF"
+    input_dir = r"F:\01-【原料仓库】不要删除！！！\02-语料库2.0原文件和语料\03-语料库2.0-1017-15分钟知识圈文档预处理与问答对\word"
+    output_dir = r"F:\01-【原料仓库】不要删除！！！\02-语料库2.0原文件和语料\03-语料库2.0-1017-15分钟知识圈文档预处理与问答对\word2pdf"
     os.makedirs(output_dir, exist_ok=True)
 
     tasks = []
@@ -85,7 +85,7 @@ if __name__ == "__main__":
         if fname.lower().endswith(supported_ext):
             input_path = osp.join(input_dir, fname)
             # output_path = osp.join(output_dir, osp.splitext(fname)[0] + "_kps_converted.pdf")
-            output_path = osp.join(output_dir, fname + "_kps_converted.pdf")
+            output_path = osp.join(output_dir, fname + ".pdf")
             if not osp.exists(output_path):
                 tasks.append((input_path, output_path))
 
