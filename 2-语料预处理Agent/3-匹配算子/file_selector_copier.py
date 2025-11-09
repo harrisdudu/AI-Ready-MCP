@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 def load_config(config_path='pdf_config2.json'):
     """
-    加载配置文件
+    加载配置文件    
     
     参数:
         config_path: 配置文件路径
@@ -210,7 +210,7 @@ def main():
     config = load_config()
     
     parser = argparse.ArgumentParser(description='文件筛选复制工具')
-    parser.add_argument('--file-list', help='包含文件路径的列表文件（如scanPDFs.txt）')
+    parser.add_argument('--file-list', help='包含文件路径的列表文件（如沪派江南精选知识库-265项.xlsx）')
     parser.add_argument('--target-dir', help='目标目录路径')
     parser.add_argument('--preserve-structure', action='store_true', help='是否保留原始目录结构')
     parser.add_argument('--extensions', nargs='+', help='要筛选的文件扩展名（不包含点号），如 pdf docx')
@@ -237,7 +237,7 @@ def main():
         print("使用方法:")
         print(f"  python {os.path.basename(__file__)} --file-list scanPDFs.txt --target-dir /path/to/target")
         print(f"  python {os.path.basename(__file__)} --create-example  # 创建示例文件列表")
-        print("  或在pdf_config2.json中设置'file_selector_file_list'和'file_selector_target_dir'")
+        print("  或在pdf_config3.json中设置'file_selector_file_list'和'file_selector_target_dir'")
         return
     
     if not target_dir:

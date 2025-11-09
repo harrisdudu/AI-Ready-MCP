@@ -1,0 +1,8 @@
+{
+    "default_pdf_path": "G:\\1-原料仓库",  
+    "file_selector_file_list": "沪派江南精选知识库-265项.xlsx",
+    "file_selector_target_dir": "G://265项",
+    "file_selector_preserve_structure": false,
+    "file_selector_extensions": ["pdf"],
+    "file_selector_chunk_size": 100
+}
